@@ -1,3 +1,44 @@
 <h1>
-  {{title}}
+  {{test}}
 </h1>
+
+<div *ngFor="let post of posts">
+  <span (click)="incrementUpvotes(post)">^</span>
+  <a *ngIf="post.link" href="{{post.link}}">
+  {{post.title}}
+  </a>
+  <span ng-hide="post.link">
+   {{post.title}}
+   </span>
+     -upvotes:{{post.upvotes}}
+</div>
+
+<!--<button (click)="addPost()">Posts</button>-->
+<br>
+<form (ngSubmit)="addPost()">
+  <input type="text" name="text" placeholder="Title" [(ngModel)]="title">
+  <input type="text" name="text" placeholder="Link" [(ngModel)]="link">
+  <button type="Submit">Post</button>
+</form>
+
+ <a routerLink="/home">Home</a> <br>
+  <a routerLink="/post/{id}">post</a>
+  <router-outlet></router-outlet>
+
+<!--<div *ngFor="let post of posts" >
+  <span (click)="incrementUpvotes(post)">^</span>
+  <a [hidden]='posts.link' href="{{posts.link}}">
+  {{post.title}} 
+  </a>
+  <span ng-hide="post.link">
+    {{post.title}}
+  </span>
+  - upvotes: {{post.upvotes}}
+</div>
+<br>
+
+<form (ngSubmit)="addPost()">
+  <input type="text" placeholder="Title" name="text" [(ngModel)]="title"> <br>
+  <input type="text" placeholder="Link" name="text" [(ngModel)]="Link">
+  <button type="submit">Post</button>
+</form>-->
